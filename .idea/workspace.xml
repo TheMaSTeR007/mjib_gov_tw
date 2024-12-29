@@ -4,15 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14c89b9b-ae2a-4e9b-97ad-bd00af4126ce" name="Changes" comment="" />
+    <list default="true" id="14c89b9b-ae2a-4e9b-97ad-bd00af4126ce" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mjib_gov_tw/Excel_Files/mjib_gov_taiwan.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mjib_gov_tw/spiders/mjib_gov_taiwan.py" beforeDir="false" afterPath="$PROJECT_DIR$/mjib_gov_tw/spiders/mjib_gov_taiwan.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;TheMaSTeR007&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/TheMaSTeR007/mjib_gov_tw.git&quot;,
+    &quot;accountId&quot;: &quot;0c96f0ba-0207-4ff9-9c3b-6e1c63471b1d&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2pxsuweVIEk0sPBz9Wye3DRao3u" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -23,11 +49,17 @@
     "Python.mjib_gov_taiwan.executor": "Run",
     "Python.scratch_1.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/jaimin.gurjar/Actowiz Live Projects (using Scrapy)/mvd_tj",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/jaimin.gurjar/Actowiz Live Projects (using Scrapy)/mjib_gov_tw/mjib_gov_tw/spiders",
     "settings.editor.selected.configurable": "configurable.group.appearance"
   }
 }]]></component>
-  <component name="RunManager" selected="Python.mjib_gov_taiwan">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jaimin.gurjar\Actowiz Live Projects (using Scrapy)\mjib_gov_tw\mjib_gov_tw\spiders" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.scratch_1">
     <configuration name="mjib_gov_taiwan" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="mjib_gov_tw" />
       <option name="ENV_FILES" value="" />
@@ -74,8 +106,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.mjib_gov_taiwan" />
         <item itemvalue="Python.scratch_1" />
+        <item itemvalue="Python.mjib_gov_taiwan" />
       </list>
     </recent_temporary>
   </component>

@@ -1,3 +1,5 @@
+import subprocess
+
 import unicodedata
 from deep_translator import GoogleTranslator
 from scrapy.cmdline import execute
@@ -105,7 +107,8 @@ class MjibGovTaiwanSpider(scrapy.Spider):
         # Path to store the Excel file can be customized by the user
         self.excel_path = r"../Excel_Files"  # Client can customize their Excel file path here (default: govtsites > govtsites > Excel_Files)
         os.makedirs(self.excel_path, exist_ok=True)  # Create Folder if not exists
-        self.filename = fr"{self.excel_path}/{self.name}.xlsx"  # Filename with Scrape Date
+        self.filename_native = fr"{self.excel_path}/{self.name}_native.xlsx"  # Filename with Scrape Date
+        self.filename_translated = fr"{self.excel_path}/{self.name}_translated.xlsx"  # Filename with Scrape Date
 
         self.browsers = ["chrome110", "edge99", "safari15_5"]
 
@@ -226,28 +229,37 @@ class MjibGovTaiwanSpider(scrapy.Spider):
             value = get_value(criminal_details_li)
             data_dict[header] = value
         data_dict['criminal_image_url'] = get_criminal_image_url(parsed_tree)
-        print(data_dict)
+        # print(data_dict)
         self.final_data_list.append(data_dict)
 
     def close(self, reason):
         print('closing spider...')
-        print("Converting List of Dictionaries into DataFrame, then into Excel file...")
-        try:
-            print("Creating Native sheet...")
-            data_df = pd.DataFrame(self.final_data_list)
-            data_df = df_cleaner(data_frame=data_df)  # Apply the function to all columns for Cleaning
-            data_df.insert(loc=0, column='id', value=range(1, len(data_df) + 1))  # Add 'id' column at position 1
-            # data_df.set_index(keys='id', inplace=True)  # Set 'id' as index for the Excel output
-            with pd.ExcelWriter(path=self.filename, engine='xlsxwriter', engine_kwargs={"options": {'strings_to_urls': False}}) as writer:
-                data_df.to_excel(excel_writer=writer, index=False)
+        if self.final_data_list:
+            try:
+                print("Creating Native sheet...")
+                native_data_df = pd.DataFrame(self.final_data_list)
+                native_data_df = df_cleaner(data_frame=native_data_df)  # Apply the function to all columns for Cleaning
+                native_data_df.insert(loc=0, column='id', value=range(1, len(native_data_df) + 1))  # Add 'id' column at position 1
+                with pd.ExcelWriter(path=self.filename_native, engine='xlsxwriter', engine_kwargs={"options": {'strings_to_urls': False}}) as writer:
+                    native_data_df.to_excel(excel_writer=writer, index=False)
+                print("Native Excel file Successfully created.")
+            except Exception as e:
+                print('Error while Generating Native Excel file:', e)
 
-            print("Native Excel file Successfully created.")
-        except Exception as e:
-            print('Error while Generating Native Excel file:', e)
+            # Run the translation script with filenames passed as arguments
+            try:
+                # Define the filenames as arguments with source language code
+                subprocess.run(
+                    args=["python", "translate_and_save.py", self.filename_native, self.filename_translated, 'zh-TW'],
+                    check=True
+                )
+                print("Translation completed successfully.")
+            except subprocess.CalledProcessError as e:
+                print(f"Error during translation: {e}")
+        else:
+            print('Final-Data-List is empty.')
         if self.api.is_connected:  # Disconnecting VPN if it's still connected
             self.api.disconnect()
-            print('VPN Connected!' if self.api.is_connected else 'VPN Disconnected!')
-
         end = time.time()
         print(f'Scraping done in {end - self.start} seconds.')
 
