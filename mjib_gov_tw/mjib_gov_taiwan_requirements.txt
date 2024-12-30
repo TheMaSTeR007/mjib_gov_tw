@@ -1,0 +1,12 @@
+# Core dependencies
+scrapy  # Web scraping framework
+pandas  # Data manipulation and analysis
+
+# Additional modules
+lxml  # For parsing HTML and XML
+urllib3  # For URL parsing and HTTP client capabilities
+deep-translator  # For translation services
+evpn  # Verify this package and add correct installation details
+
+# Use below command to install above modules
+# pip install -r mjib_gov_taiwan_requirements.txt

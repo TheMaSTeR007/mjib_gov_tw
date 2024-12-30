@@ -1,12 +1,11 @@
-import subprocess
-
-import unicodedata
 from deep_translator import GoogleTranslator
 from scrapy.cmdline import execute
 from lxml.html import fromstring
 from typing import Iterable
 from scrapy import Request
 import pandas as pd
+import unicodedata
+import subprocess
 import random
 import string
 import scrapy
